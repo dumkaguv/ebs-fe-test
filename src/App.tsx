@@ -1,11 +1,15 @@
+import { BrowserRouter as Router } from "react-router-dom";
+import { AppRouter } from "@/routes/app-router";
+import { MainLayout } from "@/components/shared";
+
 function App() {
   return (
-    <div style={{ textAlign: 'center' }}>
-      <h1>Welcome to the Front-End Developer Test!</h1>
-      <p>We wish you the best of luck. Please make sure to read the README file for
-        instructions.</p>
-    </div>
-  )
+    <Router>
+      <MainLayout>
+        <AppRouter />
+      </MainLayout>
+    </Router>
+  );
 }
 
-export default App
+export default App;
