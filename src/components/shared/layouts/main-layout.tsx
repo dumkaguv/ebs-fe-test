@@ -1,13 +1,17 @@
-import { FC, PropsWithChildren } from "react";
-import { cn } from "@/utils";
+import { FC } from "react";
+import { Container, Footer, Header } from "@/components/shared";
+import { Outlet } from "react-router-dom";
 
-interface Props {
-  className?: string;
-}
+export const MainLayout: FC = () => {
+  return (
+    <Container className="flex min-h-full flex-col">
+      <Header />
 
-export const MainLayout: FC<PropsWithChildren<Props>> = ({
-  children,
-  className,
-}) => {
-  return <div className={cn("", className)}>{children}</div>;
+      <main>
+        <Outlet />
+      </main>
+
+      <Footer />
+    </Container>
+  );
 };

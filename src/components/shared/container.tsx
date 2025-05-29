@@ -1,15 +1,16 @@
-import { FC, PropsWithChildren } from "react";
+import { FC, HTMLAttributes, PropsWithChildren } from "react";
 import { cn } from "@/utils";
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
 export const Container: FC<PropsWithChildren<Props>> = ({
   children,
   className,
+  ...props
 }) => {
   return (
-    <div className={cn("mx-auto max-w-[1440px]", className)}>{children}</div>
+    <div className={cn("mx-auto max-w-[1440px]", className)} {...props}>{children}</div>
   );
 };
