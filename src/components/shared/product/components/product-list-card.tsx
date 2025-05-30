@@ -29,7 +29,7 @@ export const ProductListCard = <T extends BaseProduct>({
           alt={item.title}
         />
         <div className="flex flex-col px-2 py-4">
-          <ProductCard.Title className="mb-3 text-xl">
+          <ProductCard.Title className="mb-3 text-xl line-clamp-2">
             {item.title}
           </ProductCard.Title>
 
