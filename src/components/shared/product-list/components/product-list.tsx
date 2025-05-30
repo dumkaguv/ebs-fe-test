@@ -1,11 +1,9 @@
-import { HTMLAttributes, useMemo, useState } from "react";
+import { HTMLAttributes, useMemo } from "react";
 import { cn } from "@/utils";
-
 import { CartItem } from "@/contexts/cart-context";
-import { BaseProduct } from "@/@types/base-product";
 import { ProductListCard } from "./product-list-card";
 import { ProductListCardSkeleton } from "./product-list-card-skeleton";
-import { useSearchParams } from "react-router-dom";
+import { useProductList } from "../hooks";
 
 interface Props<T extends CartItem> extends HTMLAttributes<HTMLDivElement> {
   items: T[];
@@ -14,7 +12,7 @@ interface Props<T extends CartItem> extends HTMLAttributes<HTMLDivElement> {
   title?: string;
 }
 
-export const ProductList = <T extends BaseProduct>({
+export const ProductList = <T extends CartItem>({
   items,
   title = `Items (${items.length})`,
   isLoading,
@@ -22,20 +20,15 @@ export const ProductList = <T extends BaseProduct>({
   className,
   ...props
 }: Props<T>) => {
-  const [searchParams, _] = useSearchParams();
+  const filteredItems = useProductList(items);
+
   const skeletons = useMemo(
     () =>
       Array.from({ length: 8 }).map((_, i) => (
         <ProductListCardSkeleton key={i} />
       )),
-    [],
+    []
   );
-
-  const category = searchParams.get("category");
-  const filteredItems =
-    category && category !== "all"
-      ? items.filter((item) => item.category === category)
-      : items;
 
   return (
     <>
@@ -44,7 +37,10 @@ export const ProductList = <T extends BaseProduct>({
           ? "Failed to load items. Try again later."
           : `Items (${filteredItems.length})` || `(${title})`}
       </h2>
-      <div className={cn("", className)} {...props}>
+      <div
+        className={cn("", className)}
+        {...props}
+      >
         <ul className="grid grid-cols-4 gap-5">
           {isLoading
             ? skeletons

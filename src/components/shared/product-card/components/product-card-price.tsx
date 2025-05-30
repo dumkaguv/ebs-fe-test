@@ -3,13 +3,16 @@ import { cn } from "@/utils";
 
 interface Props extends HTMLAttributes<HTMLParagraphElement> {}
 
-export const ProductCardCategory: FC<PropsWithChildren<Props>> = ({
+export const ProductCardPrice: FC<PropsWithChildren<Props>> = ({
   children,
   className,
   ...props
 }) => {
   return (
-    <p className={cn("text-base font-normal", className)} {...props}>
+    <p
+      className={cn("text-base font-normal", className)}
+      {...props}
+    >
       {children}
     </p>
   );

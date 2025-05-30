@@ -16,7 +16,7 @@ interface CartContextType {
   itemQuantities: Record<BaseProduct["id"], number>;
   handleProductQuantity: (
     product: BaseProduct,
-    operation: "plus" | "minus",
+    operation: "plus" | "minus"
   ) => void;
   getTotalPrice: () => number;
   getTotalItemsQuantity: () => number;
@@ -33,7 +33,7 @@ export const CartContextProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const handleProductQuantity = (
     product: BaseProduct,
-    operation: "plus" | "minus",
+    operation: "plus" | "minus"
   ) => {
     const quantityChange = operation === "plus" ? 1 : -1;
 
@@ -48,7 +48,7 @@ export const CartContextProvider: FC<PropsWithChildren> = ({ children }) => {
         }
 
         return prevItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: newQuantity } : item,
+          item.id === product.id ? { ...item, quantity: newQuantity } : item
         );
       } else {
         return [...prevItems, { ...product, quantity: 1 }];

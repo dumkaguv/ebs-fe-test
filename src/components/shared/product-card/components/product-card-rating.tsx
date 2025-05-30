@@ -13,9 +13,16 @@ export const ProductCardRating: FC<Props> = ({
   ...props
 }) => {
   return (
-    <p className={cn("flex items-center", className)} {...props}>
+    <p
+      className={cn("flex items-center", className)}
+      {...props}
+    >
       {rating.rate}
-      <Star size={16} fill="#FFFFFF" className="ml-1 text-yellow-300" />
+      <Star
+        size={16}
+        fill="#FFFFFF"
+        className="ml-1 text-yellow-300"
+      />
       <span className="self-start text-[12px]">({rating.count})</span>
     </p>
   );

@@ -9,7 +9,10 @@ export const ProductCardTitle: FC<PropsWithChildren<Props>> = ({
   ...props
 }) => {
   return (
-    <h3 className={cn("text-lg font-bold", className)} {...props}>
+    <h3
+      className={cn("text-lg font-bold", className)}
+      {...props}
+    >
       {children}
     </h3>
   );

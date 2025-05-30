@@ -8,7 +8,7 @@ export const ProductListCardSkeleton: FC<Props> = ({ className, ...props }) => {
     <div
       className={cn(
         "flex animate-pulse flex-col rounded-md bg-neutral-900/30 p-0.5 shadow-md shadow-neutral-800",
-        className,
+        className
       )}
       {...props}
     >

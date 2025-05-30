@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 import { Link } from "react-router-dom";
 import { getProductRoute } from "@/routes/constants/routes-enum";
-import * as ProductCard from "@/components/shared/product/product-card";
+import * as ProductCard from "@/components/shared/product-card";
 import { Button } from "@/components/ui";
 import { CartItem, useCartContext } from "@/contexts/cart-context";
 import { BaseProduct } from "@/@types/base-product";
@@ -20,7 +20,10 @@ export const ProductListCard = <T extends BaseProduct>({
     useCartContext();
 
   return (
-    <article className={cn("flex flex-1 flex-col", className)} {...props}>
+    <article
+      className={cn("flex flex-1 flex-col", className)}
+      {...props}
+    >
       <Link to={getProductRoute(item.id)}>
         <ProductCard.Image
           src={item.image}
@@ -29,7 +32,7 @@ export const ProductListCard = <T extends BaseProduct>({
           alt={item.title}
         />
         <div className="flex flex-col px-2 py-4">
-          <ProductCard.Title className="mb-3 text-xl line-clamp-2">
+          <ProductCard.Title className="mb-3 line-clamp-2 text-xl">
             {item.title}
           </ProductCard.Title>
 

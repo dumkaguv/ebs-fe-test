@@ -28,7 +28,7 @@ export const Header: FC<Props> = ({ className, ...props }) => {
     <header
       className={cn(
         "sticky top-0 z-10 flex max-h-[80px] items-center justify-between gap-x-3 rounded-b-md bg-neutral-900 p-3 shadow-lg shadow-neutral-800",
-        className,
+        className
       )}
       {...props}
     >
@@ -42,7 +42,10 @@ export const Header: FC<Props> = ({ className, ...props }) => {
             title={title}
           >
             <nav>
-              <Link to={href} className="relative flex items-center gap-2">
+              <Link
+                to={href}
+                className="relative flex items-center gap-2"
+              >
                 <Icon size={20}></Icon>
                 <h2>{title}</h2>
                 {items.length > 0 && href === RoutesEnum.cart && (
