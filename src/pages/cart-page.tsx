@@ -4,10 +4,10 @@ interface Props {
   className?: string;
 }
 
-export const CartPage:FC = () => {
+export const CartPage: FC = () => {
   return (
-    <div>
+    <section className="mt-5 rounded-md bg-neutral-900 p-4 shadow-sm">
       Cart
-    </div>
+    </section>
   );
 };

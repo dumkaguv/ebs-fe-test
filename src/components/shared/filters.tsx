@@ -1,6 +1,7 @@
 import { FC, HTMLAttributes } from "react";
 import { cn } from "@/utils";
 import { FilterCategories } from "@/components/shared";
+import { FilterSort } from "./filter-sort";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   categories?: Set<string>;
@@ -15,11 +16,9 @@ export const Filters: FC<Props> = ({
   className,
   ...props
 }) => {
-  if (!categories) return null;
-
   return (
     <div
-      className={cn("", className)}
+      className={cn("flex items-center justify-between gap-5", className)}
       {...props}
     >
       <FilterCategories
@@ -27,6 +26,8 @@ export const Filters: FC<Props> = ({
         isLoading={isLoading}
         isError={isError}
       />
+
+      <FilterSort />
     </div>
   );
 };

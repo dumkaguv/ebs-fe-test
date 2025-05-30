@@ -4,7 +4,7 @@ import { useFilterCategories } from "../hooks";
 import { FilterCategoriesSkeleton } from "./filter-categories-skeleton";
 
 interface Props extends HTMLAttributes<HTMLUListElement> {
-  categoriesSet: Set<string>;
+  categoriesSet?: Set<string>;
   isLoading?: boolean;
   isError?: boolean;
 }
