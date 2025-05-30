@@ -3,9 +3,7 @@ import { cn } from "@/utils";
 import { Link } from "react-router-dom";
 import { RoutesEnum } from "@/routes/constants/routes-enum";
 
-interface Props extends HTMLAttributes<HTMLElement> {
-  className?: string;
-}
+interface Props extends HTMLAttributes<HTMLElement> {}
 
 export const LogoWithImageLink: FC<Props> = ({ className, ...props }) => {
   return (

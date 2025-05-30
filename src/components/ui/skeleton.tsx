@@ -1,9 +1,7 @@
 import { FC, HTMLAttributes } from "react";
 import { cn } from "@/utils";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
-  className?: string;
-}
+interface Props extends HTMLAttributes<HTMLDivElement> {}
 
 export const Skeleton: FC<Props> = ({ className, ...props }) => {
   return (
