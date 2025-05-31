@@ -9,8 +9,6 @@ const sizes = {
 
 const variants = {
   default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
-  outline:
-    "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
 };
 
 type Size = keyof typeof sizes;
@@ -35,7 +33,7 @@ export const Button: FC<PropsWithChildren<Props>> = ({
         "focus-visible:border-ring focus-visible:ring-ring/50 inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
         sizes[size],
         variants[variant],
-        className,
+        className
       )}
       type={type}
       {...props}

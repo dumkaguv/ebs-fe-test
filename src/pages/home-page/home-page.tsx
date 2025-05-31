@@ -2,27 +2,28 @@ import { Filters } from "@/components/shared";
 import { ProductList } from "@/components/shared";
 import { FC } from "react";
 import { useHomePage } from "./hooks";
+import { Section } from "@/components/ui";
 
 export const HomePage: FC = () => {
   const { items, isLoading, isError, categories } = useHomePage();
 
   return (
     <div className="mt-5 flex flex-col gap-4">
-      <section className="rounded-md bg-neutral-900 p-4 shadow-sm">
+      <Section>
         <Filters
           categories={categories}
           isLoading={isLoading}
           isError={isError}
         />
-      </section>
+      </Section>
 
-      <section className="rounded-md bg-neutral-900 p-6 shadow-sm">
+      <Section>
         <ProductList
           items={items}
           isLoading={isLoading}
           isError={isError}
         />
-      </section>
+      </Section>
     </div>
   );
 };

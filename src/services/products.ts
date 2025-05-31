@@ -7,3 +7,9 @@ export const getAllProducts = async (): Promise<Product[]> => {
 
   return await response.json();
 };
+
+export const getProductById = async (id: Product["id"]) => {
+  const response = await fetchInstance(`${EndpointsEnum.products}/${id}`);
+
+  return await response.json();
+};

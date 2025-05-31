@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { RoutesEnum } from "./constants/routes-enum";
-import { HomePage, CartPage } from "@/pages";
+import { HomePage, CartPage, ProductPage } from "@/pages";
 import { MainLayout } from "@/components/shared";
 
 export const AppRouter = () => (
@@ -13,6 +13,10 @@ export const AppRouter = () => (
       <Route
         path={RoutesEnum.cart}
         element={<CartPage />}
+      />
+      <Route
+        path={`${RoutesEnum.product}/:id`}
+        element={<ProductPage />}
       />
     </Route>
   </Routes>

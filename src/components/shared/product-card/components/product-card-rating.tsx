@@ -4,7 +4,7 @@ import { Product } from "@/@types/product";
 import { Star } from "lucide-react";
 
 interface Props extends HTMLAttributes<HTMLParagraphElement> {
-  rating: Product["rating"];
+  rating?: Product["rating"];
 }
 
 export const ProductCardRating: FC<Props> = ({
@@ -12,6 +12,8 @@ export const ProductCardRating: FC<Props> = ({
   className,
   ...props
 }) => {
+  if (!rating) return null;
+
   return (
     <p
       className={cn("flex items-center", className)}
@@ -23,7 +25,7 @@ export const ProductCardRating: FC<Props> = ({
         fill="#FFFFFF"
         className="ml-1 text-yellow-300"
       />
-      <span className="self-start text-[12px]">({rating.count})</span>
+      <span className="self-start text-[12px]">({rating?.count})</span>
     </p>
   );
 };

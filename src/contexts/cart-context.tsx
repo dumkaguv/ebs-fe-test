@@ -18,6 +18,7 @@ interface CartContextType {
     product: BaseProduct,
     operation: "plus" | "minus"
   ) => void;
+  clearCart: () => void;
   getTotalPrice: () => number;
   getTotalItemsQuantity: () => number;
   removeProduct: (productId: BaseProduct["id"]) => void;
@@ -80,6 +81,11 @@ export const CartContextProvider: FC<PropsWithChildren> = ({ children }) => {
     });
   };
 
+  const clearCart = () => {
+    setItems([]);
+    setItemQuantities({});
+  };
+
   const getTotalPrice = () =>
     items.reduce((total, item) => total + item.price * (item.quantity ?? 0), 0);
 
@@ -95,6 +101,7 @@ export const CartContextProvider: FC<PropsWithChildren> = ({ children }) => {
         itemQuantities,
         handleProductQuantity,
         removeProduct,
+        clearCart,
         getTotalPrice,
         getTotalItemsQuantity,
       }}

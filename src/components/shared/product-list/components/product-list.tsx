@@ -32,7 +32,7 @@ export const ProductList = <T extends CartItem>({
 
   return (
     <>
-      <h2 className="mb-8 text-4xl">
+      <h2 className="mb-8 text-4xl font-bold">
         {isError
           ? "Failed to load items. Try again later."
           : `Items (${filteredItems.length})` || `(${title})`}

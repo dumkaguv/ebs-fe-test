@@ -6,6 +6,7 @@ import { Button } from "@/components/ui";
 import { CartItem, useCartContext } from "@/contexts/cart-context";
 import { BaseProduct } from "@/@types/base-product";
 import { cn } from "@/utils";
+import { ButtonAddToCart, ButtonRemoveFromCart } from "@/components/shared";
 
 interface Props<T extends CartItem> extends HTMLAttributes<HTMLElement> {
   item: T;
@@ -42,11 +43,9 @@ export const ProductListCard = <T extends BaseProduct>({
               <ProductCard.Category>{item.category}</ProductCard.Category>
             </div>
 
-            {item.rating && (
-              <div className="inline-flex items-center gap-1">
-                Rating: <ProductCard.Rating rating={item.rating} />
-              </div>
-            )}
+            <div className="inline-flex items-center gap-1">
+              Rating: <ProductCard.Rating rating={item.rating} />
+            </div>
 
             <div className="inline-flex items-center gap-1">
               Price: <ProductCard.Price>{item.price}$</ProductCard.Price>
@@ -55,16 +54,8 @@ export const ProductListCard = <T extends BaseProduct>({
         </div>
       </Link>
       <div className="mt-auto flex items-center justify-between gap-4 p-2">
-        <Button onClick={() => handleProductQuantity(item, "plus")}>
-          Add to cart{" "}
-          {itemQuantities[item.id] && `(${itemQuantities[item.id]})`}
-        </Button>
-        <Button
-          onClick={() => removeProduct(item.id)}
-          disabled={!itemQuantities[item.id]}
-        >
-          Remove
-        </Button>
+        <ButtonAddToCart item={item} />
+        <ButtonRemoveFromCart itemId={item.id} />
       </div>
     </article>
   );
