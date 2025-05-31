@@ -15,6 +15,7 @@ export const ProductCardImage: FC<Props> = ({
       className={cn("h-60 w-full rounded-md object-cover", className)}
       width={width}
       height={height}
+      loading="lazy"
       alt={alt}
       {...props}
     />
