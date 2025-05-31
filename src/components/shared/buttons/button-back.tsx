@@ -17,7 +17,7 @@ export const ButtonBack: FC<PropsWithChildren<Props>> = ({
     <Button
       onClick={() => navigate(-1)}
       size="lg"
-      className={cn("mb-10 gap-2 py-6 text-lg", className)}
+      className={cn("mb-10 gap-2 py-6 text-lg max-md:mb-6", className)}
       {...props}
     >
       {children || (

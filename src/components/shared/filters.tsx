@@ -18,7 +18,10 @@ export const Filters: FC<Props> = ({
 }) => {
   return (
     <div
-      className={cn("flex items-center justify-between gap-5", className)}
+      className={cn(
+        "flex justify-between gap-10 max-md:flex-col max-md:gap-5 md:items-center",
+        className
+      )}
       {...props}
     >
       <FilterCategories

@@ -13,7 +13,10 @@ export const Section: FC<PropsWithChildren<Props>> = ({
 }) => {
   return (
     <section
-      className={cn("rounded-md bg-neutral-900 p-6 shadow-sm", className)}
+      className={cn(
+        "rounded-md bg-neutral-900 p-6 shadow-sm max-md:p-4",
+        className
+      )}
       {...props}
     >
       {title && <h2 className="mb-8 text-4xl font-bold">{title}</h2>}

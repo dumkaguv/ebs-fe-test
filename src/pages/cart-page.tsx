@@ -35,12 +35,12 @@ export default function CartPage(): JSX.Element {
                       src={item.image}
                       width={65}
                       height={65}
-                      className="h-[65px] w-[65px] duration-200 hover:scale-[1.06]"
+                      className="h-[65px] min-h-[65px] w-[65px] min-w-[65px] shrink-0 duration-200 hover:scale-[1.06]"
                       title="Open product page"
                     />
                   </Link>
                   <div className="ml-4 flex flex-col gap-y-[3px]">
-                    <ProductCard.Title className="text-lg font-bold text-white max-lg:text-base">
+                    <ProductCard.Title className="line-clamp-2 text-lg font-bold text-white max-lg:text-base">
                       {item.title}
                     </ProductCard.Title>
                     <ProductCard.Category className="text-sm">

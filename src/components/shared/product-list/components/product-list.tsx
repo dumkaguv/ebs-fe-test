@@ -41,7 +41,7 @@ export const ProductList = <T extends CartItem>({
         className={cn("", className)}
         {...props}
       >
-        <ul className="grid grid-cols-4 gap-5">
+        <ul className="grid grid-cols-4 gap-x-5 gap-y-10 max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
           {isLoading
             ? skeletons
             : filteredItems.map((item) => (

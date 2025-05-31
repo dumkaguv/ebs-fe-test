@@ -42,20 +42,25 @@ export default function ProductPage(): JSX.Element {
         </div>
       )}
 
-      <div className="flex gap-15">
+      <div className="flex gap-15 max-lg:flex-col-reverse max-lg:gap-8">
         <ProductCard.Image
           src={product?.image}
-          className="h-auto max-w-[450px] object-fill"
+          className="h-auto max-w-[450px] object-fill max-lg:hidden"
           alt={product?.title}
         />
 
-        <div className="flex max-w-[850px] flex-col items-start gap-2">
+        <div className="flex flex-col items-start gap-2">
           <ProductCard.Title className="text-3xl">
             {product?.title}
           </ProductCard.Title>
           <ProductCard.Category className="text-xl">
             {product?.category}
           </ProductCard.Category>
+          <ProductCard.Image
+            src={product?.image}
+            className="h-auto max-w-[450px] object-fill lg:hidden"
+            alt={product?.title}
+          />
           <ProductCard.Description>
             {product?.description}
           </ProductCard.Description>

@@ -35,7 +35,7 @@ export const FilterCategories: FC<Props> = ({
 
   return (
     <ul
-      className={cn("flex items-center gap-5", className)}
+      className={cn("flex items-center gap-5 max-lg:max-w-[700px] w-full overflow-x-auto", className)}
       role="tablist"
       {...props}
     >
@@ -43,7 +43,7 @@ export const FilterCategories: FC<Props> = ({
         <li
           key={category}
           className={cn(
-            "cursor-pointer rounded-xl bg-neutral-950/20 p-4 text-lg font-bold capitalize shadow-sm shadow-neutral-800 duration-200 hover:scale-[1.02] hover:bg-neutral-800",
+            "cursor-pointer rounded-xl text-nowrap bg-neutral-950/20 p-4 text-lg font-bold capitalize shadow-sm shadow-neutral-800 duration-200 hover:scale-[1.02] hover:bg-neutral-800",
             activeIndex === index && "bg-neutral-700 hover:bg-neutral-700"
           )}
           onClick={() => onCategoryItemClick(index)}
