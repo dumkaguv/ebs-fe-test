@@ -1,13 +1,12 @@
 import { Button, Section } from "@/components/ui";
 import { useCartContext } from "@/contexts/cart-context";
-import { FC } from "react";
 import * as ProductCard from "@/components/shared/product-card";
 import { Minus, Plus, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getProductRoute } from "@/routes/constants/routes-enum";
 import { ButtonBack } from "@/components/shared";
 
-export const CartPage: FC = () => {
+export default function CartPage(): JSX.Element {
   const {
     items,
     getTotalItemsQuantity,
@@ -110,4 +109,4 @@ export const CartPage: FC = () => {
       )}
     </Section>
   );
-};
+}

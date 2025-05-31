@@ -1,10 +1,9 @@
 import { Filters } from "@/components/shared";
 import { ProductList } from "@/components/shared";
-import { FC } from "react";
 import { useHomePage } from "./hooks";
 import { Section } from "@/components/ui";
 
-export const HomePage: FC = () => {
+export default function HomePage(): JSX.Element {
   const { items, isLoading, isError, categories } = useHomePage();
 
   return (
@@ -26,4 +25,4 @@ export const HomePage: FC = () => {
       </Section>
     </div>
   );
-};
+}

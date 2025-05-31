@@ -1,7 +1,7 @@
 import { Product } from "@/@types/product";
 import { Section } from "@/components/ui";
 import { apiClient } from "@/services/api-client";
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as ProductCard from "@/components/shared/product-card";
 import {
@@ -10,7 +10,7 @@ import {
   ButtonRemoveFromCart,
 } from "@/components/shared";
 
-export const ProductPage: FC = () => {
+export default function ProductPage(): JSX.Element {
   const { id } = useParams();
 
   const [product, setProduct] = useState<Product>({} as Product);
@@ -77,4 +77,4 @@ export const ProductPage: FC = () => {
       </div>
     </Section>
   );
-};
+}

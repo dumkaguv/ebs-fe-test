@@ -4,8 +4,16 @@ import {
   FC,
   PropsWithChildren,
   useContext,
+  useEffect,
   useState,
 } from "react";
+import {
+  loadCartItems,
+  loadItemQuantities,
+  saveCartItems,
+  saveItemQuantities,
+  clearCartStorage,
+} from "@/utils/cart-storage";
 
 export type CartItem = BaseProduct & {
   quantity?: number;
@@ -27,10 +35,18 @@ interface CartContextType {
 export const CartContext = createContext<CartContextType | null>(null);
 
 export const CartContextProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [items, setItems] = useState<CartItem[]>([]);
-  const [itemQuantities, setItemQuantities] = useState<
-    Record<BaseProduct["id"], number>
-  >({});
+  const [items, setItems] = useState<CartItem[]>(loadCartItems);
+  const [itemQuantities, setItemQuantities] =
+    useState<Record<BaseProduct["id"], number>>(loadItemQuantities);
+
+  // save to local storage
+  useEffect(() => {
+    saveCartItems(items);
+  }, [items]);
+
+  useEffect(() => {
+    saveItemQuantities(itemQuantities);
+  }, [itemQuantities]);
 
   const handleProductQuantity = (
     product: BaseProduct,
@@ -65,16 +81,12 @@ export const CartContextProvider: FC<PropsWithChildren> = ({ children }) => {
         return rest;
       }
 
-      return {
-        ...prev,
-        [product.id]: updated,
-      };
+      return { ...prev, [product.id]: updated };
     });
   };
 
   const removeProduct = (productId: BaseProduct["id"]) => {
     setItems((prevItems) => prevItems.filter((item) => item.id !== productId));
-
     setItemQuantities((prev) => {
       const { [productId]: _, ...rest } = prev;
       return rest;
@@ -84,15 +96,14 @@ export const CartContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const clearCart = () => {
     setItems([]);
     setItemQuantities({});
+    clearCartStorage();
   };
 
   const getTotalPrice = () =>
     items.reduce((total, item) => total + item.price * (item.quantity ?? 0), 0);
 
   const getTotalItemsQuantity = () =>
-    items
-      .map((item) => item.quantity)
-      .reduce((total, quantity) => (total ?? 0) + (quantity ?? 0), 0) || 0;
+    items.reduce((total, item) => total + (item.quantity ?? 0), 0);
 
   return (
     <CartContext.Provider
@@ -113,10 +124,8 @@ export const CartContextProvider: FC<PropsWithChildren> = ({ children }) => {
 
 export const useCartContext = () => {
   const context = useContext(CartContext);
-
   if (!context) {
     throw new Error("useCartContext must be used within a CartContextProvider");
   }
-
   return context;
 };
